@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  go:
+    build: 
+      context: .
+      dockerfile: go.dockerfile
+    command: >
+      sh -c "cd /go/src/server && chmod +x ./run.sh && ./run.sh" 
+    volumes:
+      - ./server:/go/src/server:delegated
+    ports:
+      - 50051:50051

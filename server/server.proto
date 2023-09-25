@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./main";
+
+service Items {
+    rpc GetItem (ItemId) returns (ItemDescription) {}
+    rpc GetStreamItems(ItemsIds) returns (stream Item) {}
+}
+
+message ItemId {
+    uint32 Id = 1;
+}
+
+message ItemDescription {
+    string Description = 1;
+}
+
+message ItemsIds {
+    repeated ItemId ids = 1;
+}
+
+message Item {
+    uint32 Id = 1;
+    string Description = 2;
+}
+
